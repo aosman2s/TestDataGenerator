@@ -1,10 +1,34 @@
 package de.aspera.dataexport.util.json;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class TableQuery {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
+	@Column(name="TABLE_NAME")
 	private String tableName;
+	
+	@Column(name="COLUMNS")
 	private String columns;
-	private String whereCondition;
-	private String orderByCondition;
+	
+	@Column(name="WHERE_CLAUSE")
+	private String whereClause;
+	
+	@Column(name="ORDERBY_CLAUSE")
+	private String orderByClause;
+	
+	@ManyToOne
+	@JoinColumn(name="EXPORT_COMMAND_ID", nullable=false)
+	private ExportJsonCommand exportCommand;
 
 	public String getTableName() {
 		return tableName;
@@ -22,19 +46,29 @@ public class TableQuery {
 		this.columns = columns;
 	}
 
-	public String getWhereCondition() {
-		return whereCondition;
+	public String getWhereClause() {
+		return whereClause;
 	}
 
-	public void setWhereCondition(String whereCondition) {
-		this.whereCondition = whereCondition;
+	public void setWhereClause(String whereClause) {
+		this.whereClause = whereClause;
 	}
 
-	public String getOrderByCondition() {
-		return orderByCondition;
+	public String getOrderByClause() {
+		return orderByClause;
 	}
 
-	public void setOrderByCondition(String orderByCondition) {
-		this.orderByCondition = orderByCondition;
+	public void setOrderByClause(String orderByClause) {
+		this.orderByClause = orderByClause;
 	}
+
+	public ExportJsonCommand getExportCommand() {
+		return exportCommand;
+	}
+
+	public void setExportCommand(ExportJsonCommand exportCommand) {
+		this.exportCommand = exportCommand;
+	}
+
+	
 }

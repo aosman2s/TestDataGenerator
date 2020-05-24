@@ -20,7 +20,7 @@ public class JsonDatabaseMarshallingTest {
 		json1.setDbPassword("dbPassword");
 		json1.setDbUrl("dbUrl://foobar1/foo1");
 		json1.setDbUser("dbUser");
-		json1.setIdent("ident");
+		json1.setId(1);
 		
 		JsonDatabase json2 = new JsonDatabase();
 		
@@ -28,7 +28,7 @@ public class JsonDatabaseMarshallingTest {
 		json2.setDbPassword("dbPassword");
 		json2.setDbUrl("dbUrl://foobar/foo");
 		json2.setDbUser("dbUser");
-		json2.setIdent("ident");
+		json2.setId(2);
 		
 		jsonDatabases.add(json1);
 		jsonDatabases.add(json2);

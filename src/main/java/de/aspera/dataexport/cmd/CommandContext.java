@@ -79,17 +79,17 @@ public class CommandContext {
      * Register commands on the CommandContext.
      */
     public void loadCommands() {
-        addCommand("quit", quitCommand);
-        addCommand("q", quitCommand);
-        addCommand("h", helpCommand);
-        addCommand("help", helpCommand);
-        addCommand("init", configInitCommand);
-        addCommand("i", configInitCommand);
-        addCommand("e", exportDatasetCommand);
-        addCommand("export", exportDatasetCommand);
-        addCommand("import", importDatasetCommand);
-        addCommand("im", importDatasetCommand);
-        addCommand("exEd", exportAndEditDatasetCommand);
-        addCommand("exportEdit", exportAndEditDatasetCommand);
+//        addCommand("quit", quitCommand);
+//        addCommand("q", quitCommand);
+//        addCommand("h", helpCommand);
+//        addCommand("help", helpCommand);
+//        addCommand("init", configInitCommand);
+//        addCommand("i", configInitCommand);
+//        addCommand("e", exportDatasetCommand);
+//        addCommand("export", exportDatasetCommand);
+//        addCommand("import", importDatasetCommand);
+//        addCommand("im", importDatasetCommand);
+//        addCommand("exEd", exportAndEditDatasetCommand);
+//        addCommand("exportEdit", exportAndEditDatasetCommand);
     }
 }

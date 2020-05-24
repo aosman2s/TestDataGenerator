@@ -24,20 +24,20 @@ import org.dbunit.operation.DatabaseOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import de.aspera.dataexport.Repositories.JsonDbRepository;
 import de.aspera.dataexport.util.JDBCConnection;
 import de.aspera.dataexport.util.dataset.editor.DatasetEditorFacade;
 import de.aspera.dataexport.util.dataset.editor.TableConstrainsDescription;
 import de.aspera.dataexport.util.dataset.editor.TableKeysInvestigator;
 import de.aspera.dataexport.util.dataset.editor.TableKeysInvestigatorException;
-import de.aspera.dataexport.util.json.JsonConnectionHolder;
 import de.aspera.dataexport.util.json.JsonDatabase;
 @Component
-public class ImportDatasetCommand implements CommandRunnable {
+public class ImportDatasetCommand {
 	private static final Logger LOGGER = Logger.getLogger(ImportDatasetCommand.class.getName());
 	private static final Scanner scanner = new Scanner(System.in);
 	
 	@Autowired
-	private JsonConnectionHolder connectionRepo;
+	private JsonDbRepository jsonDbRepository; 
 	
 	@Autowired
 	private DatasetEditorFacade datasetEditorFacade;
@@ -56,12 +56,10 @@ public class ImportDatasetCommand implements CommandRunnable {
 	private CommandContext cmdContext;
 	
 
-	@Override
-	public void run() throws CommandException {
+	public void run(int jsonDbId) throws CommandException {
 		try {
 
 			final String filePath;
-			connectionRepo.initJsonDatabases();
 			String cleanOption = cmdContext.nextArgument();
 			if (cleanOption.toLowerCase().equals("-c") || cleanOption.toLowerCase().equals("-clean")) {
 				filePath = cmdContext.nextArgument();
@@ -74,7 +72,7 @@ public class ImportDatasetCommand implements CommandRunnable {
 				newInsert = false;
 				filePath = cleanOption;
 			}
-			dataConnection = connectionRepo.getJsonDatabases(cmdContext.nextArgument());
+			dataConnection = jsonDbRepository.findById(jsonDbId);
 			IDataSet dataSet = new FlatXmlDataSetBuilder().setColumnSensing(true).build(new FileInputStream(filePath));
 			IDatabaseConnection connection = getConnection(dataConnection);
 			if (cleanInsert) {

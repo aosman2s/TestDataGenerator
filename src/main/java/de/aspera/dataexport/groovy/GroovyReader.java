@@ -19,7 +19,7 @@ public class GroovyReader {
 	private static final GroovyClassLoader classLoader = new GroovyClassLoader();
 
 	public GroovyReader() throws GroovyReaderException {
-		readGroovyScript();
+//		readGroovyScript();
 	}
 
 	public void readGroovyScript() throws GroovyReaderException {

@@ -105,7 +105,7 @@ public class ConfigInitCommand implements CommandRunnable {
 			fileWriter = new FileWriter(file);
 			for (int i = 0; i < 2; i++) {
 				JsonDatabase jsonDB = new JsonDatabase();
-				jsonDB.setIdent("uniqe-connection-Id-" + i);
+				jsonDB.setId(i);
 				jsonDB.setDbDriver("Db-Driver");
 				jsonDB.setDbPassword("root");
 				jsonDB.setDbSchema("schema-1");
@@ -124,16 +124,16 @@ public class ConfigInitCommand implements CommandRunnable {
 			fileWriter = new FileWriter(file);
 			for (int i = 0; i < 2; i++) {
 				ExportJsonCommand command = new ExportJsonCommand();
-				command.setConnId("uniqe-connection-Id-" + i);
+//				command.setId("uniqe-connection-Id-" + i);
 				command.setTables(tablesList);
-				command.setCommandId("uniqe-command-Id-" + i);
+//				command.setCommandId("uniqe-command-Id-" + i);
 				command.setExportedFilePath(System.getProperty("user.home"));
 				for (int j = 0; j < 2; j++) {
 					TableQuery tab = new TableQuery();
 					tab.setTableName("tab-" + j);
 					tab.setColumns("col1,col2,col3");
-					tab.setOrderByCondition("col1 asc");
-					tab.setWhereCondition("col1='wert1' and col2='wert2'");
+					tab.setOrderByClause("col1 asc");
+					tab.setWhereClause("col1='wert1' and col2='wert2'");
 					tablesList.add(tab);
 				}
 				jsonCommands.add(command);

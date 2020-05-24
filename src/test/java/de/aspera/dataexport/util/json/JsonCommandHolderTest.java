@@ -11,13 +11,15 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import de.aspera.dataexport.Repositories.JsonExportCommandRepository;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes={
-		ExportJsonCommandHolder.class
+		JsonExportCommandRepository.class
 		})
 public class JsonCommandHolderTest {
 	@Autowired
-	private ExportJsonCommandHolder exportJsonCommandHolder;
+	private JsonExportCommandRepository exportJsonCommandHolder;
 	private ExportJsonCommand commandJsonObj;
 	private List<ExportJsonCommand> commands;
 

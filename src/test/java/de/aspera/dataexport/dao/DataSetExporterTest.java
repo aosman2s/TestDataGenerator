@@ -25,16 +25,12 @@ import org.unitils.dbunit.annotation.DataSet;
 
 import de.aspera.dataexport.util.ExporterController;
 import de.aspera.dataexport.util.json.ExportJsonCommand;
-import de.aspera.dataexport.util.json.ExportJsonCommandHolder;
-import de.aspera.dataexport.util.json.JsonConnectionHolder;
 import de.aspera.dataexport.util.json.JsonDatabase;
 import de.aspera.dataexport.util.json.TableQuery;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes= {
-		ExporterController.class, 
-		JsonConnectionHolder.class,
-		ExportJsonCommandHolder.class})
+		ExporterController.class})
 public class DataSetExporterTest extends BasicFacadeTest {
 
 	protected final static Logger logger = Logger.getLogger(DataSetExporterTest.class.getName());
